@@ -10,12 +10,9 @@
 `define SIM_DURATION 					5000
 
 
-module state_machine_toplevel_framework_tb();
+module sha_1_tb();
 
-	logic tb_q_start;
 	logic tb_q_done;
-	logic [1:0] tb_q_state;
-
 	
 	logic [31:0] tb_q_test[22:0];
 	
@@ -77,29 +74,12 @@ module state_machine_toplevel_framework_tb();
 		end
 		
 		
-	state_machine_toplevel_framework dut_inst_0(.clk(tb_local_clock),
-															  .reset_n(tb_local_reset_n),
-															  .start(tb_start),
-															  .q_start(tb_q_start),
-															  .q_complete(tb_q_done),
-															  .q_state(tb_q_state),
-															  .config_status_1(tb_q_test[0]),
-															  .config_status_2(tb_q_test[1]),
-															  .writedata(tb_q_test[17 : 2]),
-															  .readdata(tb_q_test[22 : 18]));
+	sha_1 dut_inst_0(
+							.clk(tb_local_clock),
+							.reset_n(tb_local_reset_n),
+							.start(tb_start),
+							.in_data(tb_q_test[17 : 2]),
+							.out_data(tb_q_test[22 : 18]),
+							.done(tb_q_done));
 	
-	
-	// for illustration purposes only, make sure that radix in the Modelsim-Waveform Viewer
-	// to the ASCII format ... 
-	
-	logic [12*8:1] state_string;		// ASCII string ...
-	
-	always@(tb_q_state)
-		case(tb_q_state)
-			2'b00: state_string = "RESET_STATE";
-			2'b01: state_string = "IDLE_STATE";
-			2'b10: state_string = "PROC_STATE";
-			2'b11: state_string = "DONE_STATE";
-		endcase		
-														
 endmodule 
