@@ -1,0 +1,27 @@
+13:13:36 **** Incremental Build of configuration Nios II for project base_sys_val ****
+make all 
+Info: Building ../base_sys_val_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../base_sys_val_bsp/
+[BSP build complete]
+Info: Compiling hello_world.c to obj/default/hello_world.o
+nios2-elf-gcc -xc -MP -MMD -c -I../base_sys_val_bsp//HAL/inc -I../base_sys_val_bsp/ -I../base_sys_val_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/hello_world.o hello_world.c
+Info: Linking base_sys_val.elf
+nios2-elf-g++  -T'../base_sys_val_bsp//linker.x' -msys-crt0='../base_sys_val_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../base_sys_val_bsp/   -Wl,-Map=base_sys_val.map   -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o base_sys_val.elf obj/default/hello_world.o -lm -msys-lib=m
+nios2-elf-insert base_sys_val.elf --thread_model hal --cpu_name nios2_cpu --qsys true --simulation_enabled false --id 305419896 --sidp 0x9048 --timestamp 1559556416 --stderr_dev sys_jtag_uart --stdin_dev sys_jtag_uart --stdout_dev sys_jtag_uart --sopc_system_name base_sys --quartus_project_dir "D:/HDA/2_sem/1_ComplexDigitalArchitecture/Lab/Lab2" --jdi ../..//output_files/sys_test.jdi --sopcinfo D:/HDA/2_sem/1_ComplexDigitalArchitecture/Lab/Lab2/software/base_sys_val_bsp/../../base_sys.sopcinfo
+Info: (base_sys_val.elf) 7976 Bytes program size (code + initialized data).
+Info:                    21 KBytes free for stack + heap.
+Info: Creating base_sys_val.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source base_sys_val.elf >base_sys_val.objdump
+[base_sys_val build complete]
+13:13:45 **** Build of configuration Nios II for project base_sys_val ****
+make all 
+Info: Building ../base_sys_val_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../base_sys_val_bsp/
+[BSP build complete]
+[base_sys_val build complete]
+13:13:48 **** Incremental Build of configuration Nios II for project base_sys_val ****
+make all 
+Info: Building ../base_sys_val_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../base_sys_val_bsp/
+[BSP build complete]
+[base_sys_val build complete]
