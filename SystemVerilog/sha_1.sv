@@ -52,9 +52,9 @@ module sha_1(
 	logic [31:0] in_register[15:0];
 	logic [31:0] out_register[4:0];
 	
-	logic q_done;
+	logic q_done = 0;
 	
-	sha_1_core inst_0 (
+	sha_1_core inst_sha_1_core_0 (
 		.clk(clk),
 		.enable(latch_complete),
 		.data(in_register),
@@ -103,6 +103,7 @@ module sha_1(
 						
 						ctrl          <= 2'd2;
 						
+						latch_complete <= 1'b0;
 						if (q_done)
 							begin
 								state         <= __DONE;
@@ -123,7 +124,7 @@ module sha_1(
 							begin
 								out_data[i] <= out_register[i];
 							end
-						
+													
 						done				<= q_done;
 						state 		  	<= __IDLE;
 					end

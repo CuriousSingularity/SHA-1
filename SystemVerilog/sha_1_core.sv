@@ -249,6 +249,7 @@ module sha_1_core(
 				iteration = 0;
 				q_done <= 1'b1;
 				
+				$display("*********SHA Done******\n");
 			end
 	end
 		
