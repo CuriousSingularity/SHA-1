@@ -15,10 +15,10 @@ module top_level_sys(
 	
 		base_sys u0 (
 		.clk_clk                         (clk),                         //        clk.clk
-		.pio_input_export                (gpio[0]),                //  pio_input.export
-		.pio_leds_export                 (nios_led_output),                 //   pio_leds.export
+		//.pio_input_export                (gpio[0]),                //  pio_input.export
+		//.pio_leds_export                 (nios_led_output),                 //   pio_leds.export
 		.reset_reset_n                   (reset_n),                   //      reset.reset_n
-		.time_out_export                 (gpio[1]),                 //   time_out.export
+		//.time_out_export                 (gpio[1]),                 //   time_out.export
 		//.pwm_output_writeresponsevalid_n (nios_pwm_output)  // pwm_output.writeresponsevalid_n
 	);	
 	

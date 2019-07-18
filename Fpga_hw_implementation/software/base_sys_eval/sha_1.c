@@ -1,19 +1,23 @@
 #include <stdio.h>
-#include"includes.h"
 #include <string.h>
+#include "sha_1.h"
 
 unsigned int H[5] = {0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476, 0xC3D2E1F0};
 unsigned int K[4] = {0x5A827999, 0x6ED9EBA1, 0x8F1BBCDC, 0xCA62C1D6};
 unsigned int ASCII[80] = {0};
 unsigned int (*FnPtr[4])(unsigned int Hash1, unsigned int Hash2, unsigned int Hash3);
 
-int main (void)
+void sha_1_sw (void)
 {
-	setbuf(stdout, NULL);
+	//setbuf(stdout, NULL);
 	unsigned char input[64];
 	int length = 0, block = -1;
 
 	memset(input, 0, sizeof(input));
+
+	input[0] = 'a';
+	input[1] = 'b';
+	input[2] = 'c';
 
 	FnPtr[0] = Function_Iteration1;
 	FnPtr[1] = Function_Iteration2;
@@ -57,16 +61,14 @@ int main (void)
 	printf("%08x ",H[1]);
 	printf("%08x ",H[2]);
 	printf("%08x ",H[3]);
-	printf("%08x",H[4]);
-
-	return 0;
+	printf("%08x ",H[4]);
+	printf("\n\n");
 }
 
 
 void DataReader(unsigned char* string,int* length)
 {
-	printf("Enter the string : ");
-	gets(string);
+
 	for(unsigned int i = 0; string[i] != '\0'; i++)
 	{
 		(*length)++;
