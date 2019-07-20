@@ -82,6 +82,7 @@ module sha_1(
 					__IDLE:  begin
 					
 						ctrl          <= 2'd1;
+						done				<= 1'b0;;
 						
 						if(sync_start)
 							begin
@@ -125,7 +126,7 @@ module sha_1(
 								out_data[i] <= out_register[i];
 							end
 													
-						done				<= q_done;
+						done				<= 1'b1;
 						state 		  	<= __IDLE;
 					end
 					

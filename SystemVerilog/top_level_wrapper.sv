@@ -3,7 +3,7 @@ module top_level_wrapper(
 	input logic clk, reset_n,
 	input logic write, read,
 	input logic [31:0] writedata, 
-	input logic [31:0] address,
+	input logic [4:0] address,
 	output logic [31:0] readdata
 	);
 	
@@ -34,6 +34,8 @@ module top_level_wrapper(
 					for(i = 0;i <= 21; i = i+1) begin: clear_register_set
 						register[i] <= 32'd0;
 					end
+//					register[1] <= 32'h61626380;
+//					register[16] <= 32'h18;
 				end
 			else
 				begin
@@ -70,6 +72,8 @@ module top_level_wrapper(
 									register[20] <= out_register[3];
 									register[21] <= out_register[4];
 									register[0][1]  <= stop;
+									start_pulse_count <= 0;
+									register[0][0] <= 0;
 								end
 						end
 						
@@ -92,6 +96,22 @@ module top_level_wrapper(
 			begin
 				case(address)
 					0: readdata = register[0];
+					1: readdata = register[1];
+					2: readdata = register[2];
+					3: readdata = register[3];
+					4: readdata = register[4];
+					5: readdata = register[5];
+					6: readdata = register[6];
+					7: readdata = register[7];
+					8: readdata = register[8];
+					9: readdata = register[9];
+					10: readdata = register[10];
+					11: readdata = register[11];
+					12: readdata = register[12];
+					13: readdata = register[13];
+					14: readdata = register[14];
+					15: readdata = register[15];
+					16: readdata = register[16];
 					17: readdata = register[17];
 					18: readdata = register[18];
 					19: readdata = register[19];

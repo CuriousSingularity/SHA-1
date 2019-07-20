@@ -218,10 +218,10 @@ module sha_1_core(
 		
 		if (iteration == 0)
 			begin
+				q_done <= 1'b0;
 				
 				if (enable)
 					begin
-						q_done <= 1'b0;
 						datainit(myHash,K,H);
 						asciidataclear(ASCII);
 						bytetomessagepack(data,ASCII);		
