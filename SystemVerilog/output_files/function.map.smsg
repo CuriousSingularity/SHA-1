@@ -1,0 +1,2 @@
+Warning (10268): Verilog HDL information at top_level_wrapper.sv(30): always construct contains both blocking and non-blocking assignments File: D:/Repositories/SHA-1/SystemVerilog/top_level_wrapper.sv Line: 30
+Warning (10268): Verilog HDL information at sha_1_core.sv(216): always construct contains both blocking and non-blocking assignments File: D:/Repositories/SHA-1/SystemVerilog/sha_1_core.sv Line: 216

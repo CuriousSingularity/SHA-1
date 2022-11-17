@@ -31,11 +31,15 @@ module top_level_wrapper(
 		begin : data_capture
 			if(reset_n == 1'b0)
 				begin
-					for(i = 0;i <= 21; i = i+1) begin: clear_register_set
+					for(i = 0;i <= 21; i = i+1) begin
 						register[i] <= 32'd0;
 					end
-//					register[1] <= 32'h61626380;
-//					register[16] <= 32'h18;
+//					for(i = 0;i <= 15; i = i+1) begin 
+//						in_register[i] <= 32'd0;
+//					end
+//					for(i = 0;i <= 4; i = i+1) begin 
+//						out_register[i] <= 32'd0;
+//					end
 				end
 			else
 				begin
@@ -71,9 +75,9 @@ module top_level_wrapper(
 									register[19] <= out_register[2];
 									register[20] <= out_register[3];
 									register[21] <= out_register[4];
-									register[0][1]  <= stop;
+									register[0][1] <= 1'b1;
+									register[0][0] <= 1'b0;
 									start_pulse_count <= 0;
-									register[0][0] <= 0;
 								end
 						end
 						

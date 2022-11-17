@@ -56,6 +56,7 @@ module sha_1(
 	
 	sha_1_core inst_sha_1_core_0 (
 		.clk(clk),
+		.reset_n(reset_n),
 		.enable(latch_complete),
 		.data(in_register),
 		.q_result(out_register),

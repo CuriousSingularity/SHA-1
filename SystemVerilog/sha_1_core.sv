@@ -1,5 +1,5 @@
 module sha_1_core(
-	input logic clk, enable,
+	input logic clk, enable, reset_n,
 	input logic [31:0] data [15:0],
 	output logic [31:0] q_result[4:0],
 	output logic q_done
@@ -215,41 +215,48 @@ module sha_1_core(
 		
 	always_ff@(posedge clk)
 	begin
-		
-		if (iteration == 0)
+		if(reset_n == 1'b0)
 			begin
-				q_done <= 1'b0;
-				
-				if (enable)
-					begin
-						datainit(myHash,K,H);
-						asciidataclear(ASCII);
-						bytetomessagepack(data,ASCII);		
-						hashduplicate(H, myHash);
-						iteration += 1;
-					end
+					iteration = 0;
+					q_done <= 1'b0;
 			end
-			
-		else if (iteration >=1 && iteration <= 80)
-			begin
-				completeiterations(iteration, myHash,ASCII,K);
-				iteration += 1;
-			
-			end
-			
 		else
 			begin
+			if (iteration == 0)
+				begin
+					q_done <= 1'b0;
+					
+					if (enable)
+						begin
+							datainit(myHash,K,H);
+							asciidataclear(ASCII);
+							bytetomessagepack(data,ASCII);		
+							hashduplicate(H, myHash);
+							iteration += 1;
+						end
+				end
 				
-				addition_with_mainhash(myHash,H);
-				q_result[0] = myHash.Hash[0];
-				q_result[1] = myHash.Hash[1];
-				q_result[2] = myHash.Hash[2];
-				q_result[3] = myHash.Hash[3];
-				q_result[4] = myHash.Hash[4];
-				iteration = 0;
-				q_done <= 1'b1;
+			else if (iteration >=1 && iteration <= 80)
+				begin
+					completeiterations(iteration, myHash,ASCII,K);
+					iteration += 1;
 				
-				$display("*********SHA Done******\n");
+				end
+				
+			else
+				begin
+					
+					addition_with_mainhash(myHash,H);
+					q_result[0] = myHash.Hash[0];
+					q_result[1] = myHash.Hash[1];
+					q_result[2] = myHash.Hash[2];
+					q_result[3] = myHash.Hash[3];
+					q_result[4] = myHash.Hash[4];
+					iteration = 0;
+					q_done <= 1'b1;
+					
+					$display("*********SHA Done******\n");
+				end
 			end
 	end
 		

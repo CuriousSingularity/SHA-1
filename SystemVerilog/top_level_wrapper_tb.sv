@@ -13,9 +13,10 @@
 
 module top_level_wrapper_tb();
 
-	logic tb_q_done;
+	logic tb_q_done = 0;
 	
 	logic [31:0] tb_q_test[21:0];
+	logic tb_start = 0, tb_stop = 0;
 	
 	// ### clock generation process ...
    logic tb_local_clock = 0;
@@ -164,6 +165,8 @@ module top_level_wrapper_tb();
 	top_level_wrapper inst_0_top_level_wrapper(
 									.clk(tb_local_clock),
 									.reset_n(tb_local_reset_n),
+//									.start(tb_start),
+//									.stop(tb_stop),
 									.write(tb_write),
 									.read(tb_read),
 									.writedata(tb_writedata),
